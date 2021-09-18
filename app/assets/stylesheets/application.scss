@@ -10,4 +10,21 @@
 
 // Your CSS partials
 @import "components/index";
+@import "components/banner";
 @import "pages/index";
+@import "pages/home";
+
+
+
+
+.green {
+  color: $green
+}
+
+.black {
+  color: $black;
+}
+
+.white {
+  color: $off-white;
+}
