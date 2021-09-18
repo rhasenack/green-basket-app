@@ -1,0 +1,39 @@
+.devise-form-box {
+  margin: 50px;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+
+  h2 {
+    text-align: center;
+  }
+
+  input {
+    border-radius: 10px;
+  }
+
+  .btn {
+    background-color: $blue;
+    text-align: left;
+  }
+
+  a {
+    color: $black;
+    text-decoration: none;
+    opacity: 50%;
+
+    &:hover {
+      text-decoration: none;
+      font-weight: bold;
+    }
+  }
+
+  .form-actions {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    // position: absolute;
+    // left: 350px;
+    // top: 290px;
+  }
+}
