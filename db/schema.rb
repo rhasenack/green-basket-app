@@ -10,10 +10,63 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_18_003055) do
+ActiveRecord::Schema.define(version: 2021_09_18_005154) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "basket_tags", force: :cascade do |t|
+    t.bigint "tag_id", null: false
+    t.bigint "basket_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["basket_id"], name: "index_basket_tags_on_basket_id"
+    t.index ["tag_id"], name: "index_basket_tags_on_tag_id"
+  end
+
+  create_table "baskets", force: :cascade do |t|
+    t.string "name"
+    t.time "pickup_min"
+    t.time "pickup_max"
+    t.integer "price"
+    t.text "description"
+    t.integer "stock"
+    t.bigint "restaurant_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["restaurant_id"], name: "index_baskets_on_restaurant_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "basket_id"
+    t.integer "quantity"
+    t.string "name"
+    t.text "description"
+    t.integer "price"
+    t.datetime "date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["basket_id"], name: "index_orders_on_basket_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "restaurants", force: :cascade do |t|
+    t.string "name"
+    t.string "city"
+    t.string "country"
+    t.string "address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_restaurants_on_user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +80,7 @@ ActiveRecord::Schema.define(version: 2021_09_18_003055) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "basket_tags", "baskets"
+  add_foreign_key "basket_tags", "tags"
+  add_foreign_key "restaurants", "users"
 end
