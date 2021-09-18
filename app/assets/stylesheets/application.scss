@@ -11,6 +11,7 @@
 // Your CSS partials
 @import "components/index";
 @import "components/banner";
+@import "components/forms";
 @import "pages/index";
 @import "pages/home";
 
@@ -27,4 +28,8 @@
 
 .white {
   color: $off-white;
+}
+
+.gradient-bg {
+  background-image: linear-gradient($green, $green-transparency);
 }
