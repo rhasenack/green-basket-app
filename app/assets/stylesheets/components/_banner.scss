@@ -1,0 +1,30 @@
+.banner {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("https://images.pexels.com/photos/4054850/pexels-photo-4054850.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 300px;
+  width: 100%;
+  position: relative;
+
+  .banner-text {
+    font-size: 42px;
+    font-weight: bold;
+    position: absolute;
+    top: 30%;
+    left: 40%;
+    #title-green {
+      color: $green;
+    }
+    #title-white {
+      color: $off-white;
+    }
+
+    #slogan {
+      font-weight: normal;
+      font-size:35px;
+      color: $off-white;
+      opacity: 0.8;
+    }
+  }
+}

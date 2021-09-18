@@ -1,2 +1,51 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner">
+  <div class="banner-text">
+    <span id="title-green">Green</span>
+    <span id="title-white">Basket</span>
+    <p id="slogan">slogan</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row mb-5">
+    <div class="col-md-6 col-sm-12">
+      <h2 class="green mt-4 mb-0">Destino correto</h2>
+      <h2 class="black mb-3">às sobras</h2>
+      <p>Nossa missão é dar um destino digno à toda comida produzida no país.</p>
+      <p>Diariamente, milhôes de toneladas de alimentos em perfeito estado são jogadas fora devido à má gestão das sobras. Grande parte deste alimento é próprio para o   consumo humano, enquanto o restante pode servir como adubo ou ração animal para produtores locais.</p>
+      <p>Estamos aqui para mudar esta realidade, através de três iniciativas:</p>
+
+      <div id="info-cards" class="mt-4">
+        <div id="info-bg">
+          <div class="flex-info">
+            <p>Venda ao consumidor final por preço reduzido dos produtos em bom estado</p>
+            <%= image_tag "consumer.png" %>
+          </div>
+
+          <div class="flex-info">
+            <%= image_tag "barn.png" %>
+            <p>Fornecimento para produtores rurais locais de itens não adequados para consumo humano</p>
+          </div>
+
+          <div class="flex-info">
+            <p>Doações para instituições necessitadas ou indivíduos em vulnerabilidade social</p>
+            <%= image_tag "love.png" %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-sm-12">
+      <%= image_tag "waste.jpg", id:"waste-img", class:"mt-4" %>
+      <h2 class="text-right mt-4">Você está <span class="green">conosco?</span></h2>
+
+      <button class="home-button mb-3">Sou um <span class="green">consumidor</span> e quero produtos a baixo custo</button>
+      <br>
+      <button class="home-button mb-3">Sou um <span class="green">produtor</span> e me interesso por sobras</button>
+      <br>
+      <button class="home-button">Sou um <span class="green">estabelecimento</span> e quero disponibilizar meus produtos</button>
+    </div>
+  </div>
+
+
+</div>
