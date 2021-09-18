@@ -1,1 +1,40 @@
 // Specific CSS for your home-page
+
+.flex-info {
+
+  display:flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 80px;
+  }
+}
+
+#info-cards {
+  position: relative;
+
+  #info-bg {
+    background-image: linear-gradient($green, $green-transparency);
+    padding: 25px;
+    border-radius: 0px 10px 10px 0px;
+  }
+
+}
+
+#waste-img {
+  border-radius: 10px 0px 0px 10px;
+  width: 100%;
+}
+
+
+.home-button {
+  background-color: $blue;
+  box-shadow: none;
+  border-radius: 10px 0px 0px 10px;
+  border: none;
+  height: 50px;
+  padding: 0px 5px 0px 20px;
+  width: 100%;
+  text-align: left;
+}
