@@ -1,2 +1,0 @@
-class Reustarant < ApplicationRecord
-end
