@@ -3,7 +3,7 @@ const addToCheckout = () => {
 
   if (document.querySelector('.baskets-show')) {
     const basketCards = document.querySelectorAll('.basket-card')
-    const checkoutContainer = document.querySelector('.checkout-card')
+    const checkoutContainer = document.querySelector('.checkout-items')
 
     const changeValue = (element, value) => {
       let valor = Number(element.parentNode.querySelector('.card-count').innerText);
@@ -28,10 +28,11 @@ const addToCheckout = () => {
       console.log(basketName);
       let value = Number(card.querySelector('.card-count').innerText);
 
+
+
+      let cardHTML = `<div class='checkout-item ${basketName}'><h3>${basketName}</h3> <div class='std-flex-space-between'><p class='quantity'>qtd: 1</p><p class='price' data-unit-price = '789' data-total-price = '0'>R$ 7,89</p></div>`
+
       // if value is 1, element must be added to the checkout card
-
-      let cardHTML = `<div class='checkout-item ${basketName}'><h3>${basketName}</h3> <div class='std-flex-space-between'><p class='quantity'>qtd: 1</p><p class='price' data-unit-price = '789'>R$ 7,89</p></div>`
-
 
       if (value === 1 && action === 'add') {
           checkoutContainer.insertAdjacentHTML('beforeend', cardHTML);
@@ -39,12 +40,14 @@ const addToCheckout = () => {
 
       let basketCheckoutCard = document.querySelector(`.${basketName}`);
 
+      // if it's 0, remove
       if (value === 0) {
           if (basketCheckoutCard) {
             basketCheckoutCard.remove();
           }
         }
 
+      // if it's already there, update the quantity and the total price
       if (basketCheckoutCard) {
         let quantity = basketCheckoutCard.querySelector('.quantity')
         quantity.innerText = `qtd: ${value}`
@@ -53,9 +56,24 @@ const addToCheckout = () => {
         let unitPrice = Number(priceField.dataset.unitPrice);
 
         priceField.innerText = `R$ ${unitPrice * value / 100}`
+        priceField.dataset.totalPrice = String(unitPrice * value)
 
       }
 
+      // get all prices
+
+      let prices = document.querySelectorAll('.price')
+      let totalPrice = 0;
+
+      prices.forEach(price => {
+        totalPrice += Number(price.dataset.totalPrice);
+        // console.log(price.dataset.totalPrice)
+      });
+
+      // update total with prices
+
+      let totalPriceField = document.querySelector('.total-price')
+      totalPriceField.innerText = `Total: R$ ${totalPrice/100}`
     }
 
     basketCards.forEach(card => {
@@ -82,6 +100,12 @@ const addToCheckout = () => {
     });
 
   }
+
+  let name = document.querySelector('.restaurant-name')
+
+  name.addEventListener('click', event => {
+    name.contentEditable = true;
+  })
 
 }
 
