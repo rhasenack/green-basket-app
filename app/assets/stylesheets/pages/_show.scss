@@ -1,5 +1,9 @@
 .restaurant-info {
 
+  [contenteditable] {
+    outline: 0px solid transparent;
+  }
+
   h1 {
     margin-top: 20px;
     margin-bottom: 0px;
@@ -19,6 +23,9 @@
 
 
 .checkout-card {
+  // position: fixed;
+  // top: 50vh;
+  // width: 100%;
   padding: 30px;
   border-radius: 10px;
   .checkout-item {
@@ -34,5 +41,16 @@
     .price {
       font-weight: bold;
     }
+  }
+
+  .total-price {
+      font-weight: bold;
+  }
+
+  .checkout-button {
+    background-color: $blue;
+    border-style: none;
+    border-radius: 5px;
+    padding: 5px 10px;
   }
 }
