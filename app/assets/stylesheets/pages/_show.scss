@@ -16,3 +16,23 @@
     padding-top: 3px;
   }
 }
+
+
+.checkout-card {
+  padding: 30px;
+  border-radius: 10px;
+  .checkout-item {
+    background-color: $off-white;
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;
+    margin-bottom: 10px;
+
+    p {
+      margin: 0px;
+    }
+
+    .price {
+      font-weight: bold;
+    }
+  }
+}
