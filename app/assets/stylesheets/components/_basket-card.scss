@@ -1,0 +1,75 @@
+
+.basket-card {
+  margin-top: 30px;
+  display: flex;
+
+  width: 450px;
+  height: 260px;
+
+
+  .card-bottom-info {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
+    font-weight: bold;
+    width: 100%;
+
+    p {
+      flex-grow: 0;
+    }
+  }
+
+  .card-text {
+    margin-left: 20px;
+    position: relative;
+  }
+
+  h2, h3 {
+    opacity: 60%;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  p {
+    margin-bottom: 5px;
+    font-size: 16px;
+  }
+
+  hr {
+    width:20%;
+    text-align: left;
+    margin-left: 0;
+  }
+
+  .basket-image {
+    min-width: 180px;
+    background-image: url('http://localhost:3000/assets/bakery-basket-e0bf997c3c9285314caceafcc162430a897d198b4360a29f567b88bc63496959.jpg');
+    background-size: cover;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 10px;
+
+    span {
+      // position: absolute;
+      width: fit-content;
+      border-radius: 5px;
+      background-color: $green;
+      padding: 3px 6px;
+      top: 10px;
+      margin-right: 5px;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+  }
+}

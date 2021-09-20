@@ -1,2 +1,33 @@
-// Import page-specific CSS files here.
-@import "home";
+@import "components/basket-card";
+
+
+hr {
+  width: 80%;
+  text-align: left;
+}
+
+.filters {
+  display: flex;
+  align-content: center;
+  justify-content: start;
+
+  p {
+    width: fit-content;
+    padding: 0px 25px;
+    border-radius: 10px;
+    background-color: $blue;
+    margin-right: 10px;
+    margin-bottom: 0px;
+  }
+}
+
+  #map {
+  height: 90%;
+}
+
+
+.left-column, .right-column{
+  overflow: scroll;
+  height: calc(100vh - 66px);
+  float: left;
+}
