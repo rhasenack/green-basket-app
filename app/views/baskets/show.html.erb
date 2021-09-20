@@ -1,46 +1,97 @@
 <div class="restaurant-banner"></div>
-<div class="container">
-  <div class="restaurant-info">
-    <h1>Padaria do ZeZé</h1>
-    <p class="soft-gray mb-1"> padaria</p>
-    <div class="std-flex-left">
-      <i class="fa fa-star soft-gray" aria-hidden="true"></i>
-      <i class="fa fa-star soft-gray" aria-hidden="true"></i>
-      <i class="fa fa-star soft-gray" aria-hidden="true"></i>
-      <i class="fa fa-star soft-gray" aria-hidden="true"></i>
-      <i class="fa fa-star soft-gray" aria-hidden="true"></i>
-      <span class="ml-3 soft-gray">3 avaliações </span>
+<div class="baskets-show">
+  <div class="container">
+    <div class="restaurant-info">
+      <h1>Padaria do ZeZé</h1>
+      <p class="soft-gray mb-1"> padaria</p>
+      <div class="std-flex-left">
+        <i class="fa fa-star soft-gray" aria-hidden="true"></i>
+        <i class="fa fa-star soft-gray" aria-hidden="true"></i>
+        <i class="fa fa-star soft-gray" aria-hidden="true"></i>
+        <i class="fa fa-star soft-gray" aria-hidden="true"></i>
+        <i class="fa fa-star soft-gray" aria-hidden="true"></i>
+        <span class="ml-3 soft-gray">3 avaliações </span>
+      </div>
+      <p class="mb-0">Rua Vinte de Abril, 505</p>
+      <p>Sorocaba, SP</p>
     </div>
-    <p class="mb-0">Rua Vinte de Abril, 505</p>
-    <p>Sorocaba, SP</p>
-  </div>
 
-  <div class="cards">
-    <div class="basket-card">
-      <div class="basket-image">
-        <div class="tags">
-          <span>pães</span>
-          <span>bolos</span>
+    <div class="row">
+      <div class="col-6">
+
+        <div class="cards">
+          <div class="basket-card">
+            <div class="basket-image">
+              <div class="tags">
+                <span>pães</span>
+                <span>bolos</span>
+              </div>
+            </div>
+            <div class="card-text">
+              <h2 class='basket-name'>basket 1</h2>
+              <hr>
+              <p>Cesta de pães com aproximadamente 1kg</p>
+            <div class="food-icons">
+              <%= image_tag "vegan.png" %>
+              <%= image_tag "lactose-free.png" %>
+              <%= image_tag "gluten-free.png" %>
+            </div>
+
+            <div class="std-flex-center mt-4">
+              <button class ="subtract"> - </button>
+              <span class ="card-count"> 0 </span>
+              <button class ="add">+</button>
+            </div>
+              <div class="card-bottom-info">
+                <p>17:45 - 18:30</p>
+                <p>R$ 7,89</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="cards">
+          <div class="basket-card">
+            <div class="basket-image">
+              <div class="tags">
+                <span>pães</span>
+                <span>bolos</span>
+              </div>
+            </div>
+            <div class="card-text">
+              <h2 class="basket-name">basket 2</h2>
+              <hr>
+              <p>Cesta de pães com aproximadamente 1kg</p>
+            <div class="food-icons">
+              <%= image_tag "vegan.png" %>
+              <%= image_tag "lactose-free.png" %>
+              <%= image_tag "gluten-free.png" %>
+            </div>
+
+            <div class="std-flex-center mt-4">
+              <button class ="subtract"> - </button>
+              <span class ="card-count"> 0 </span>
+              <button class ="add">+</button>
+            </div>
+              <div class="card-bottom-info">
+                <p>17:45 - 18:30</p>
+                <p>R$ 7,89</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="card-text">
-        <h2>nome da basket</h2>
-        <hr>
-        <p>Cesta de pães com aproximadamente 1kg</p>
-      <div class="food-icons">
-        <%= image_tag "vegan.png" %>
-        <%= image_tag "lactose-free.png" %>
-        <%= image_tag "gluten-free.png" %>
-      </div>
 
-      <div class="std-flex-center mt-4">
-        <button> - </button>
-        <span id="card-count"> 0 </span>
-        <button>+</button>
-      </div>
-        <div class="card-bottom-info">
-          <p>17:45 - 18:30</p>
-          <p>R$ 7,89</p>
+      <div class="col-6">
+        <div class="checkout-card gradient-bg">
+          <h2>Checkout</h2>
+          <div class="checkout-item">
+            <h3>Cesta 1</h3>
+            <div class="std-flex-space-between">
+              <p class='quantity'>qtd: 1</p>
+              <p class="price">R$ 7,89</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
