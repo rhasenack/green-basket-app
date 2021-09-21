@@ -7,4 +7,8 @@ class BasketsController < ApplicationController
   def show
 
   end
+
+  def edit
+
+  end
 end
