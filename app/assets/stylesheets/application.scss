@@ -14,7 +14,8 @@
 @import "components/forms";
 @import "pages/index";
 @import "pages/home";
-
+@import "pages/show";
+@import "pages/edit";
 
 
 
@@ -30,6 +31,35 @@
   color: $off-white;
 }
 
+.soft-gray {
+  color: $soft-gray;
+}
+
 .gradient-bg {
   background-image: linear-gradient($green, $green-transparency);
+}
+
+
+.std-flex-left {
+  display: flex;
+  // justify-content: center;
+  align-content: center;
+}
+
+.std-flex-end {
+  display: flex;
+  justify-content: end;
+  align-content: center;
+}
+
+.std-flex-center {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.std-flex-space-between {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
 }
