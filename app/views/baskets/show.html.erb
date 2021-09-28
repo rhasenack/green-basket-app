@@ -30,7 +30,7 @@
               </div>
             </div>
             <div class="card-text">
-              <h2 class='basket-name'><%= @basket.name %></h2>
+              <h2 class='basket-name'><%= @basket.name%></h2>
               <hr>
               <p><%= @basket.description %></p>
             <div class="food-icons">
@@ -38,10 +38,10 @@
               <%= image_tag "lactose-free.png" %>
               <%= image_tag "gluten-free.png" %>
             </div>
-            <div class="std-flex-center mt-4">
-              <button class ="subtract"> - </button>
-              <span class ="card-count"> 0 </span>
-              <button class ="add">+</button>
+            <div class="std-flex-center mt-4 operation-buttons">
+              <%= link_to '-', cart_remove_path(basket_id: @basket.id), class: "subtract", remote: true %>
+              <span class ="card-count"><%= CartBasket.where("basket_id = #{@basket.id} and cart_id =#{@cart.id}").first.nil? ? 0 : CartBasket.where("basket_id = #{@basket.id} and cart_id =#{@cart.id}").first.quantity%></span>
+              <%= link_to '+', cart_add_path(basket_id: @basket.id),class: "add", remote: true %>
             </div>
               <div class="card-bottom-info">
                 <p><%= "#{@basket.pickup_min.hour}:#{@basket.pickup_min.min} - #{@basket.pickup_max.hour}:#{@basket.pickup_max.min}" %></p>
@@ -54,7 +54,6 @@
 
 <!-- Other baskets from the restaurant -->
         <h2 class="mt-3 mb-0">Outras cestas deste restaurante</h2>
-
         <% @baskets.each do |basket| %>
           <div class="cards">
             <div class="basket-card">
@@ -75,10 +74,10 @@
                 <%= image_tag "gluten-free.png" %>
               </div>
 
-              <div class="std-flex-center mt-4">
-                <button class ="subtract"> - </button>
-                <span class ="card-count"> 0 </span>
-                <button class ="add">+</button>
+              <div class="std-flex-center mt-4 operation-buttons">
+              <%= link_to '-', cart_remove_path(basket_id: basket.id), class: "subtract", remote: true %>
+              <span class ="card-count"><%= CartBasket.where("basket_id = #{basket.id} and cart_id =#{@cart.id}").first.nil? ? 0 : CartBasket.where("basket_id = #{basket.id} and cart_id =#{@cart.id}").first.quantity%></span>
+              <%= link_to '+', cart_add_path(basket_id: basket.id),class: "add", remote: true %>
               </div>
                 <div class="card-bottom-info">
                 </div>
@@ -92,10 +91,20 @@
         <div class="checkout-card gradient-bg">
           <h2>Checkout</h2>
           <div class="checkout-items">
-          </div>
-          <div class="std-flex-space-between mt-4">
-            <p class="total-price mb-0"> Total: R$ 0,00</p>
-            <button class="checkout-button"> Make Order</button>
+            <div class="checkout-baskets">
+              <% @baskets_on_cart.each do |basket, quantity| %>
+                <div class="checkout-item <%=basket.name.downcase.gsub(' ', '-')%>">
+                  <h3><%= basket.name%></h3>
+                  <div class='std-flex-space-between'>
+                    <p  class='quantity'>qtd: <%= quantity %></p>
+                    <p class='price' data-unit-price = '<%=basket.price%>' data-total-price = '<%=basket.price.to_f*quantity%>'>R$ <%= basket.price/100.0   %></p>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+            <div class="std-flex-space-between mt-4">
+              <p class="total-price mb-0"> Total: R$ <%= @total/100.0 %></p>
+              <button class="checkout-button"> Make Order</button>
           </div>
         </div>
       </div>

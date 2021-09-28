@@ -94,6 +94,24 @@
     border: none;
     border-radius: 5px;
   }
+  .operation-buttons {
+    a {
+      width: 30px;
+      height: 30px;
+      background-color: $blue;
+      box-shadow: none;
+      border: none;
+      border-radius: 5px;
+      text-align: center;
+      text-decoration: none;
+      color: $black;
+      vertical-align: middle;
+
+      &:hover {
+        text-decoration:none
+      }
+    }
+  }
 
   .card-count {
     margin: 0px 10px;

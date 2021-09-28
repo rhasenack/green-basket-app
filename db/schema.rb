@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_18_011807) do
+ActiveRecord::Schema.define(version: 2021_09_28_144430) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,23 @@ ActiveRecord::Schema.define(version: 2021_09_18_011807) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["restaurant_id"], name: "index_baskets_on_restaurant_id"
+  end
+
+  create_table "cart_baskets", force: :cascade do |t|
+    t.bigint "cart_id", null: false
+    t.bigint "basket_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "quantity"
+    t.index ["basket_id"], name: "index_cart_baskets_on_basket_id"
+    t.index ["cart_id"], name: "index_cart_baskets_on_cart_id"
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -89,6 +106,9 @@ ActiveRecord::Schema.define(version: 2021_09_18_011807) do
 
   add_foreign_key "basket_tags", "baskets"
   add_foreign_key "basket_tags", "tags"
+  add_foreign_key "cart_baskets", "baskets"
+  add_foreign_key "cart_baskets", "carts"
+  add_foreign_key "carts", "users"
   add_foreign_key "orders_baskets", "baskets"
   add_foreign_key "orders_baskets", "orders"
   add_foreign_key "restaurants", "users"
