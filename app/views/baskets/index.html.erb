@@ -1,43 +1,46 @@
-<div class="container">
-  <div class="row">
-    <div class="col-6 left-column">
-      <h2 class="mt-4"><span class="green">Baskets</span> em sua área</h2>
-      <div class="filters">
-        <p>tipo</p>
-        <p>preço</p>
-        <p>estabelecimento</p>
+<div class="index">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-6 left-column">
+        <h2 class="mt-4"><span class="green">Baskets</span> em sua área</h2>
+        <div class="filters">
+          <p>tipo</p>
+          <p>preço</p>
+          <p>estabelecimento</p>
+        </div>
+
+        <% @baskets.each do |basket| %>
+          <%= link_to basket_path(basket) do %>
+            <div class="basket-card">
+              <div class="basket-image">
+                <div class="tags">
+                  <% basket.tags.each do |tag| %>
+                      <span><%= tag.name %></span>
+                  <% end %>
+                </div>
+              </div>
+              <div class="card-text">
+                <h3><%= basket.restaurant.name %></h3>
+                <h2><%= basket.name %></h2>
+                <hr>
+                <p><%= basket.description %></p>
+                <div class="card-bottom-info">
+                  <p><%= "#{basket.pickup_min.hour}:#{basket.pickup_min.min} - #{basket.pickup_max.hour}:#{basket.pickup_max.min}" %></p>
+                  <p><%= "R$ #{basket.price.to_i/100.0}" %></p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
       </div>
 
-      <% @baskets.each do |basket| %>
-        <div class="basket-card">
-          <div class="basket-image">
-            <div class="tags">
-              <% basket.tags.each do |tag| %>
-                  <span><%= tag.name %></span>
-              <% end %>
-            </div>
-          </div>
-          <div class="card-text">
-            <h3><%= basket.restaurant.name %></h3>
-            <h2><%= basket.name %></h2>
-            <hr>
-            <p><%= basket.description %></p>
-            <div class="card-bottom-info">
-              <p><%= "#{basket.pickup_min.hour}:#{basket.pickup_min.min} - #{basket.pickup_max.hour}:#{basket.pickup_max.min}" %></p>
-              <p><%= "R$ #{basket.price.to_i/100.0}" %></p>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
+      <div class="col-6 right-column">
+        <div id="map" class="mt-5"></div>
+      </div>
 
-    <div class="col-6 right-column">
-      <div id="map" class="mt-5"></div>
     </div>
 
   </div>
-
-
-
 
 </div>

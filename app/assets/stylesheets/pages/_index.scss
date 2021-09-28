@@ -1,33 +1,56 @@
 @import "components/basket-card";
 
 
-hr {
-  width: 80%;
-  text-align: left;
-}
+.index {
 
-.filters {
-  display: flex;
-  align-content: center;
-  justify-content: start;
-
-  p {
-    width: fit-content;
-    padding: 0px 25px;
-    border-radius: 10px;
-    background-color: $blue;
-    margin-right: 10px;
-    margin-bottom: 0px;
+  hr {
+    width: 80%;
+    text-align: left;
   }
-}
 
-  #map {
-  height: 90%;
-}
+  .filters {
+    display: flex;
+    align-content: center;
+    justify-content: start;
+
+    p {
+      width: fit-content;
+      padding: 0px 25px;
+      border-radius: 10px;
+      background-color: $blue;
+      margin-right: 10px;
+      margin-bottom: 0px;
+    }
+  }
+
+    #map {
+    height: 90%;
+  }
 
 
-.left-column, .right-column{
-  overflow: scroll;
-  height: calc(100vh - 66px);
-  float: left;
+  .left-column, .right-column{
+    overflow: scroll;
+    height: calc(100vh - 66px);
+    float: left;
+  }
+
+
+    a {
+      text-decoration: none;
+      color: $black;
+
+      &:hover {
+        text-decoration: none;
+        color: $black;
+      }
+    }
+
+    .basket-card {
+
+      &:hover {
+       cursor: pointer;
+      -webkit-box-shadow: 0px 0px 10px 2px rgba(193,193,193,0.89);
+      box-shadow: 0px 0px 10px 2px rgba(193,193,193,0.89);
+      }
+    }
 }
