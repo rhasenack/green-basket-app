@@ -4,6 +4,7 @@ class Basket < ApplicationRecord
 
   has_many :orders_baskets
   has_many :orders, through: :orders_baskets
+  has_many :cart_baskets
   belongs_to :restaurant
 
   validates :name, length: { minimum: 5 }

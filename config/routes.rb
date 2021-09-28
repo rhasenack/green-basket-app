@@ -5,12 +5,14 @@ Rails.application.routes.draw do
 
   resources :baskets, only: [:index]
 
+  resources :baskets, only: [:show] do
+  member do
+    get :edit
+  end
+  end
 
-    resources :baskets, only: [:show] do
+  get '/cart/add', to: "carts#add_basket_to_cart"
+  get '/cart/remove', to: "carts#remove_basket_from_cart"
 
-    member do
-      get :edit
-    end
 
-    end
 end
