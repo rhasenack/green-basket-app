@@ -4,6 +4,7 @@ const addToCheckout = () => {
   if (document.querySelector('.baskets-show')) {
     const basketCards = document.querySelectorAll('.basket-card')
     const checkoutContainer = document.querySelector('.checkout-items')
+    const checkoutBaskets = document.querySelector('.checkout-baskets')
 
     const changeValue = (element, value) => {
       let valor = Number(element.parentNode.querySelector('.card-count').innerText);
@@ -24,24 +25,23 @@ const addToCheckout = () => {
 
     const addToCheckout = (card, action) => {
       // get basket name from element
-      let basketName = card.querySelector('.basket-name').innerText.replace(/\s+/g, '');;
-      console.log(basketName);
+      let basketName = card.querySelector('.basket-name').innerText;
       let value = Number(card.querySelector('.card-count').innerText);
 
 
-
-      let cardHTML = `<div class='checkout-item ${basketName}'><h3>${basketName}</h3> <div class='std-flex-space-between'><p class='quantity'>qtd: 1</p><p class='price' data-unit-price = '789' data-total-price = '0'>R$ 7,89</p></div>`
+      let cardHTML = `<div class='checkout-item ${basketName.replaceAll(' ', '-').toLowerCase()}'><h3>${basketName}</h3> <div class='std-flex-space-between'><p class='quantity'>qtd: 1</p><p class='price' data-unit-price = '789' data-total-price = '0'>R$ 7,89</p></div>`
 
       // if value is 1, element must be added to the checkout card
 
       if (value === 1 && action === 'add') {
-          checkoutContainer.insertAdjacentHTML('beforeend', cardHTML);
+        checkoutBaskets.insertAdjacentHTML('beforeend', cardHTML);
       }
 
-      let basketCheckoutCard = document.querySelector(`.${basketName}`);
+      let basketCheckoutCard = document.querySelector(`.${basketName.replaceAll(' ', '-').toLowerCase()}`);
 
       // if it's 0, remove
       if (value === 0) {
+        console.log(basketCheckoutCard)
           if (basketCheckoutCard) {
             basketCheckoutCard.remove();
           }

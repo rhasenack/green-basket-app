@@ -30,7 +30,7 @@
               </div>
             </div>
             <div class="card-text">
-              <h2 class='basket-name'><%= @basket.name %></h2>
+              <h2 class='basket-name'><%= @basket.name%></h2>
               <hr>
               <p><%= @basket.description %></p>
             <div class="food-icons">
@@ -91,10 +91,20 @@
         <div class="checkout-card gradient-bg">
           <h2>Checkout</h2>
           <div class="checkout-items">
-          </div>
-          <div class="std-flex-space-between mt-4">
-            <p class="total-price mb-0"> Total: R$ 0,00</p>
-            <button class="checkout-button"> Make Order</button>
+            <div class="checkout-baskets">
+              <% @baskets_on_cart.each do |basket, quantity| %>
+                <div class="checkout-item <%=basket.name.downcase.gsub(' ', '-')%>">
+                  <h3><%= basket.name%></h3>
+                  <div class='std-flex-space-between'>
+                    <p  class='quantity'>qtd: <%= quantity %></p>
+                    <p class='price' data-unit-price = '<%=basket.price%>' data-total-price = '<%=basket.price.to_f*quantity%>'>R$ <%= basket.price/100.0   %></p>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+            <div class="std-flex-space-between mt-4">
+              <p class="total-price mb-0"> Total: R$ <%= @total/100.0 %></p>
+              <button class="checkout-button"> Make Order</button>
           </div>
         </div>
       </div>
