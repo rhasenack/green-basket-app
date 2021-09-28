@@ -2,7 +2,7 @@
 <div class="baskets-show">
   <div class="container">
     <div class="restaurant-info">
-      <h1 class='restaurant-name'>Padaria do ZeZé</h1>
+      <h1 class='restaurant-name'><%= @restaurant.name %></h1>
       <p class="soft-gray mb-1"> padaria</p>
       <div class="std-flex-left">
         <i class="fa fa-star soft-gray" aria-hidden="true"></i>
@@ -18,68 +18,74 @@
 
     <div class="row">
       <div class="col-6">
-
+<!-- Selected Basket -->
+        <h2>Cesta selecionada</h2>
         <div class="cards">
           <div class="basket-card">
             <div class="basket-image">
               <div class="tags">
-                <span>pães</span>
-                <span>bolos</span>
+                <% @basket.tags.each do |tag| %>
+                  <span><%= tag.name %></span>
+                <% end %>
               </div>
             </div>
             <div class="card-text">
-              <h2 class='basket-name'>basket 1</h2>
+              <h2 class='basket-name'><%= @basket.name %></h2>
               <hr>
-              <p>Cesta de pães com aproximadamente 1kg</p>
+              <p><%= @basket.description %></p>
             <div class="food-icons">
               <%= image_tag "vegan.png" %>
               <%= image_tag "lactose-free.png" %>
               <%= image_tag "gluten-free.png" %>
             </div>
-
             <div class="std-flex-center mt-4">
               <button class ="subtract"> - </button>
               <span class ="card-count"> 0 </span>
               <button class ="add">+</button>
             </div>
               <div class="card-bottom-info">
-                <p>17:45 - 18:30</p>
-                <p>R$ 7,89</p>
+                <p><%= "#{@basket.pickup_min.hour}:#{@basket.pickup_min.min} - #{@basket.pickup_max.hour}:#{@basket.pickup_max.min}" %></p>
+                <p><%= "R$ #{@basket.price.to_i/100.0}" %></p>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="cards">
-          <div class="basket-card">
-            <div class="basket-image">
-              <div class="tags">
-                <span>pães</span>
-                <span>bolos</span>
-              </div>
-            </div>
-            <div class="card-text">
-              <h2 class="basket-name">basket 2</h2>
-              <hr>
-              <p>Cesta de pães com aproximadamente 1kg</p>
-            <div class="food-icons">
-              <%= image_tag "vegan.png" %>
-              <%= image_tag "lactose-free.png" %>
-              <%= image_tag "gluten-free.png" %>
-            </div>
 
-            <div class="std-flex-center mt-4">
-              <button class ="subtract"> - </button>
-              <span class ="card-count"> 0 </span>
-              <button class ="add">+</button>
-            </div>
-              <div class="card-bottom-info">
-                <p>17:45 - 18:30</p>
-                <p>R$ 7,89</p>
+<!-- Other baskets from the restaurant -->
+        <h2 class="mt-3 mb-0">Outras cestas deste restaurante</h2>
+
+        <% @baskets.each do |basket| %>
+          <div class="cards">
+            <div class="basket-card">
+              <div class="basket-image">
+                <div class="tags">
+                  <% @basket.tags.each do |tag| %>
+                    <span><%= tag.name %></span>
+                  <% end %>
+                </div>
+              </div>
+              <div class="card-text">
+                <h2 class="basket-name"><%= basket.name %></h2>
+                <hr>
+                <p><%= basket.description %></p>
+              <div class="food-icons">
+                <%= image_tag "vegan.png" %>
+                <%= image_tag "lactose-free.png" %>
+                <%= image_tag "gluten-free.png" %>
+              </div>
+
+              <div class="std-flex-center mt-4">
+                <button class ="subtract"> - </button>
+                <span class ="card-count"> 0 </span>
+                <button class ="add">+</button>
+              </div>
+                <div class="card-bottom-info">
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        <% end %>
       </div>
 
       <div class="col-6">
