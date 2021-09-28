@@ -40,9 +40,8 @@
             </div>
             <div class="std-flex-center mt-4 operation-buttons">
               <%= link_to '-', cart_remove_path(basket_id: @basket.id), class: "subtract", remote: true %>
-              <span class ="card-count"> 0 </span>
+              <span class ="card-count"><%= CartBasket.where("basket_id = #{@basket.id} and cart_id =#{@cart.id}").first.nil? ? 0 : CartBasket.where("basket_id = #{@basket.id} and cart_id =#{@cart.id}").first.quantity%></span>
               <%= link_to '+', cart_add_path(basket_id: @basket.id),class: "add", remote: true %>
-              <%# <button class ="add">+</button> %>
             </div>
               <div class="card-bottom-info">
                 <p><%= "#{@basket.pickup_min.hour}:#{@basket.pickup_min.min} - #{@basket.pickup_max.hour}:#{@basket.pickup_max.min}" %></p>
@@ -75,10 +74,10 @@
                 <%= image_tag "gluten-free.png" %>
               </div>
 
-              <div class="std-flex-center mt-4">
-                <button class ="subtract"> - </button>
-                <span class ="card-count"> 0 </span>
-                <button class ="add">+</button>
+              <div class="std-flex-center mt-4 operation-buttons">
+              <%= link_to '-', cart_remove_path(basket_id: basket.id), class: "subtract", remote: true %>
+              <span class ="card-count"><%= CartBasket.where("basket_id = #{basket.id} and cart_id =#{@cart.id}").first.nil? ? 0 : CartBasket.where("basket_id = #{basket.id} and cart_id =#{@cart.id}").first.quantity%></span>
+              <%= link_to '+', cart_add_path(basket_id: basket.id),class: "add", remote: true %>
               </div>
                 <div class="card-bottom-info">
                 </div>
