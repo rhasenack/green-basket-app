@@ -92,14 +92,16 @@
           <h2>Checkout</h2>
           <div class="checkout-items">
             <div class="checkout-baskets">
-              <% @baskets_on_cart.each do |basket, quantity| %>
-                <div class="checkout-item <%=basket.name.downcase.gsub(' ', '-')%>">
-                  <h3><%= basket.name%></h3>
-                  <div class='std-flex-space-between'>
-                    <p  class='quantity'>qtd: <%= quantity %></p>
-                    <p class='price' data-unit-price = '<%=basket.price%>' data-total-price = '<%=basket.price.to_f*quantity%>'>R$ <%= basket.price/100.0   %></p>
+              <% unless @baskets_on_cart.nil? %>
+                <% @baskets_on_cart.each do |basket, quantity| %>
+                  <div class="checkout-item <%=basket.name.downcase.gsub(' ', '-')%>">
+                    <h3><%= basket.name%></h3>
+                    <div class='std-flex-space-between'>
+                      <p  class='quantity'>qtd: <%= quantity %></p>
+                      <p class='price' data-unit-price = '<%=basket.price%>' data-total-price = '<%=basket.price.to_f*quantity%>'>R$ <%= basket.price/100.0   %></p>
+                    </div>
                   </div>
-                </div>
+                <% end %>
               <% end %>
             </div>
             <div class="std-flex-space-between mt-4">
