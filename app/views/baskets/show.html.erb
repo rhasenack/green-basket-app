@@ -104,7 +104,7 @@
             </div>
             <div class="std-flex-space-between mt-4">
               <p class="total-price mb-0"> Total: R$ <%= @total/100.0 %></p>
-              <button class="checkout-button"> Make Order</button>
+              <%= link_to 'Place Order', orders_path, class: 'checkout-button', method: :post %>
           </div>
         </div>
       </div>
