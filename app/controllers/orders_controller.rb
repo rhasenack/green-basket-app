@@ -23,4 +23,12 @@ class OrdersController < ApplicationController
     ## redirect to user dashboard
     redirect_to root_path, notice: "Order created successfully!"
   end
+
+  def destroy
+    # @order = Order.find(params[:id])
+    Order.last.destroy!
+
+
+
+  end
 end
