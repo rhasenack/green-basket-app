@@ -1,5 +1,4 @@
 class CartsController < ApplicationController
-  before_action :check_user_cart, only: [:add_basket_to_cart]
 
   def add_basket_to_cart
     # raise
