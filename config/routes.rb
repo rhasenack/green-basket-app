@@ -6,13 +6,14 @@ Rails.application.routes.draw do
   resources :baskets, only: [:index]
 
   resources :baskets, only: [:show] do
-  member do
-    get :edit
+    member do
+      get :edit
+    end
   end
-  end
+
+  resources :orders, only: [:create]
 
   get '/cart/add', to: "carts#add_basket_to_cart"
   get '/cart/remove', to: "carts#remove_basket_from_cart"
-
 
 end
