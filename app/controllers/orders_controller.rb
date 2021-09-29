@@ -20,5 +20,7 @@ class OrdersController < ApplicationController
     @order.price = total_cart_price
     @order.save!
 
+    ## redirect to user dashboard
+    redirect_to root_path, notice: "Order created successfully!"
   end
 end
