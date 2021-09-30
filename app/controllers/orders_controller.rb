@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
     @order.save!
 
     ## redirect to user dashboard
-    redirect_to root_path, notice: "Order created successfully!"
+    redirect_to user_dashboard_path, notice: "Order created successfully!"
   end
 
   def destroy
