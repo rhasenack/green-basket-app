@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  resources :baskets, only: [:index]
+  resources :baskets, only: [:index, :new, :create]
   resources :baskets, only: [:show] do
     member do
       get :edit

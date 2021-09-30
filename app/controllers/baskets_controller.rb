@@ -24,5 +24,25 @@ class BasketsController < ApplicationController
 
   end
 
+  def new
+    @basket = Basket.new()
+  end
+
+  def create
+    @basket = Basket.new(basket_params)
+    @basket.restaurant = Restaurant.first
+    if @basket.save
+      redirect_to baskets_path
+    else
+      render :new
+    end
+  end
+
+
+  private
+
+  def basket_params
+    params.require(:basket).permit(:name, :price, :description, :stock, :pickup_min, :pickup_max)
+  end
 
 end
