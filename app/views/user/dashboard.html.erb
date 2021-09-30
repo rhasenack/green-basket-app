@@ -1,39 +1,40 @@
 <div class="container">
   <div class="dashboard">
     <h2 class='text-center mt-4 mb-4'>Suas <span class="green">Ordens</span></h2>
-    <div class="dashboard-order-card">
-      <div class="dashboard-restaurant-banner">
-      </div>
-      <div class="card-text">
-        <div class="restaurant-info">
-          <h2>Padaria do Zezé</h2>
-          <p class="mt-0 mb-0">padaria</p>
-          <div class="std-flex-left">
-            <i class="fa fa-star soft-gray" aria-hidden="true"></i>
-            <i class="fa fa-star soft-gray" aria-hidden="true"></i>
-            <i class="fa fa-star soft-gray" aria-hidden="true"></i>
-            <i class="fa fa-star soft-gray" aria-hidden="true"></i>
-            <i class="fa fa-star soft-gray" aria-hidden="true"></i>
-            <span class="ml-3 soft-gray">3 avaliações </span>
+    <% @orders.each do |order| %>
+      <div class="dashboard-order-card">
+        <div class="dashboard-restaurant-banner">
+        </div>
+        <div class="card-text">
+          <div class="restaurant-info">
+            <h2><%= order.baskets.first.restaurant.name %></h2>
+            <p class="mt-0 mb-0">padaria</p>
+            <div class="std-flex-left">
+              <i class="fa fa-star soft-gray" aria-hidden="true"></i>
+              <i class="fa fa-star soft-gray" aria-hidden="true"></i>
+              <i class="fa fa-star soft-gray" aria-hidden="true"></i>
+              <i class="fa fa-star soft-gray" aria-hidden="true"></i>
+              <i class="fa fa-star soft-gray" aria-hidden="true"></i>
+              <span class="ml-3 soft-gray">3 avaliações </span>
+            </div>
+            <p class="mb-0"><%= order.baskets.first.restaurant.address %></p>
+            <p><%= order.baskets.first.restaurant.city %></p>
           </div>
-          <p class="mb-0">Rua Vinte de Abril, 505</p>
-          <p>Sorocaba, SP</p>
-        </div>
-        <div class="bottom-card-info std-flex-space-between">
-        <div class="buttons">
-          <%= link_to 'delete', order_path(Order.last), class: "order-delete-button", method: 'delete'%>
+          <div class="bottom-card-info std-flex-space-between">
+          <div class="buttons std-flex-column-bottom">
+            <%= link_to 'delete', order_path(Order.last), class: "order-delete-button", method: 'delete'%>
+          </div>
+
+          <div class="infos">
+            <p class="mt-0 mb-0">17:45 - 18:30</p>
+            <p class="mt-0 mb-0"><strong>R$ <%= order.price/100.0%></strong></p>
+          </div>
         </div>
 
-        <div class="infos">
-          <p class="mt-0 mb-0">17:45 - 18:30</p>
-          <p class="mt-0 mb-0"><strong>R$ 15,78</strong></p>
+
         </div>
       </div>
-
-
-      </div>
-    </div>
-
+    <% end %>
 
     <h2 class="text-center mt-5">Suas <span class="green">Ordens Passadas</span></h2>
 

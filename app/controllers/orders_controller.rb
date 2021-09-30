@@ -5,15 +5,24 @@ class OrdersController < ApplicationController
     @user_cart = Cart.where("user_id = #{current_user.id}").first
     @cart_baskets = CartBasket.where("cart_id = #{@user_cart.id}")
     total_cart_price = 0
-    ## Get Price
 
-    @order = Order.new(user: current_user, date: Time.now)
+    #Check if user already has an order for this day
+    user_orders = Order.where("user_id = #{current_user.id}")
+    user_orders.each do |order|
+      if order.date.to_date == DateTime.now.to_date
+        flash[:notice] = 'You already have an order placed for today!'
+        redirect_to user_dashboard_path and return
+      end
+    end
+
+
+    @order = Order.new(user: current_user, date: Time.now, status: 'placed')
     @order.save!
 
     @cart_baskets.each do |cart_basket|
       total_cart_price += cart_basket.basket.price * cart_basket.quantity
       basket = cart_basket.basket
-      order_basket = OrdersBasket.new(order: @order, basket: basket, name: basket.name, description: basket.description, price: basket.price, quantity: cart_basket.quantity)
+      order_basket = OrdersBasket.new(order: @order, basket: basket, name: basket.name, description: basket.description, price: basket.price, quantity: cart_basket.quantity, )
       order_basket.save!
     end
 
@@ -27,8 +36,5 @@ class OrdersController < ApplicationController
   def destroy
     # @order = Order.find(params[:id])
     Order.last.destroy!
-
-
-
   end
 end
