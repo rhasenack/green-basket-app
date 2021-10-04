@@ -2,10 +2,9 @@
 class CustomSessionsController < Devise::SessionsController
 
   after_action :after_login, only: :create
-  after_action :after_registration, only: :create
 
   def after_login
-    raise
+    # raise
     check_user_cart
   end
 

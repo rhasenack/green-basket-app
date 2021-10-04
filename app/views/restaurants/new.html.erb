@@ -6,6 +6,7 @@
         <%= simple_form_for @restaurant do |f|  %>
           <div class="form-inputs">
             <%= f.input :name %>
+            <%= f.input :address %>
           </div>
           <div class="form-actions">
             <%= f.button :submit, "Create Restaurant"%>
@@ -15,8 +16,3 @@
     </div>
   </div>
 </div>
-
-
-<script async
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4pZlhCteWdP_CS0zgmUG8YuFsxPsm9bk&libraries=places&callback=initMap">
-</script>

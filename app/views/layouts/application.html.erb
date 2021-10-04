@@ -7,7 +7,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyA4pZlhCteWdP_CS0zgmUG8YuFsxPsm9bk' %>
+    <%= javascript_include_tag 'https://maps.googleapis.com/maps/api/js?key=AIzaSyA4pZlhCteWdP_CS0zgmUG8YuFsxPsm9bk&v=3.exp&sensor=false&libraries=places' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
@@ -16,4 +16,5 @@
     <%= render 'shared/flashes' %>
     <%= yield %>
   </body>
+
 </html>
