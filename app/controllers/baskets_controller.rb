@@ -1,7 +1,7 @@
 class BasketsController < ApplicationController
 
   def index
-    @baskets = Basket.all
+    @baskets = Basket.all.sort_by { |x| x.restaurant.id }
   end
 
   def show
