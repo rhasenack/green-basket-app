@@ -29,11 +29,13 @@ import "bootstrap";
 import { initMap } from '../shared/google_maps_baskets';
 import { addToCheckout } from '../shared/baskets_show';
 import { enableEditButtons } from '../shared/baskets_edit';
+import { autocompleteStart } from '../shared/maps_autocomplete';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   initMap();
-  addToCheckout();
+  // addToCheckout();
   enableEditButtons();
+  autocompleteStart();
 });
