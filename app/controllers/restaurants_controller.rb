@@ -6,6 +6,18 @@ class RestaurantsController < ApplicationController
   end
 
   def create
+    @restaurant = Restaurant.new(restaurant_params)
+    @restaurant.user = current_user
+    @restaurant.save!
+    redirect_to baskets_path
 
   end
+
+
+  private
+
+  def restaurant_params
+    params.require(:restaurant).permit(:name, :address)
+  end
+
 end
