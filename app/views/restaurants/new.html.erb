@@ -1,17 +1,19 @@
-<div class="container">
-  <div class="row justify-content-md-center">
-    <div class="col-6">
-      <div class="devise-form-box gradient-bg">
-        <h2>Novo Restaurante</h2>
-        <%= simple_form_for @restaurant do |f|  %>
-          <div class="form-inputs">
-            <%= f.input :name %>
-            <%= f.input :address %>
-          </div>
-          <div class="form-actions">
-            <%= f.button :submit, "Create Restaurant"%>
-          </div>
-        <% end %>
+<div class="restaurants-new">
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-6">
+        <div class="devise-form-box gradient-bg">
+          <h2>Novo Restaurante</h2>
+          <%= simple_form_for @restaurant do |f|  %>
+            <div class="form-inputs">
+              <%= f.input :name %>
+              <%= f.input :address %>
+            </div>
+            <div class="form-actions">
+              <%= f.button :submit, "Create Restaurant"%>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
