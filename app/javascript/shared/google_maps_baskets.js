@@ -8,15 +8,9 @@ const initMap = () => {
       });
 
 
-    const icon = {
-      url: 'https://cdn-icons-png.flaticon.com/512/684/684908.png', // url
-      scaledSize: new google.maps.Size(30, 30), // scaled size
-      origin: new google.maps.Point(0, 0), // origin
-      anchor: new google.maps.Point(15, 30) // anchor
-    };
 
     const createMarkers =  (marker, card) => {
-      console.log('marker')
+      console.log('marker');
       marker.setMap(map);
     }
 
@@ -30,6 +24,13 @@ const initMap = () => {
         let latitude = Number(card.dataset.latitude);
         let longitude = Number(card.dataset.longitude);
 
+        let icon = {
+          url: `https://cdn-icons-png.flaticon.com/512/684/684908.png?${card.dataset.restaurant}`, // url
+          scaledSize: new google.maps.Size(30, 30), // scaled size
+          origin: new google.maps.Point(0, 0), // origin
+          anchor: new google.maps.Point(15, 30) // anchor
+        };
+
         let marker = new google.maps.Marker({
           position: { lat: latitude, lng: longitude},
           map,
@@ -39,26 +40,38 @@ const initMap = () => {
 
         createMarkers(marker,card);
 
-        const changeMarkerOnHover = () => {
-          const cards = document.querySelectorAll('.basket-card');
-          const mapMarker = document.querySelector('#map img');
-          cards.forEach(card => {
-            card.addEventListener('mouseover', event => {
-              mapMarker.src = 'https://cdn-icons-png.flaticon.com/512/447/447031.png';
-            })
-
-            card.addEventListener('mouseout', event => {
-              mapMarker.src = 'https://cdn-icons-png.flaticon.com/512/684/684908.png';
-            })
-          });
-        }
-
-        // changeMarkerOnHover();
-
-
       }
     });
+
+    const changeMarkerOnHover = () => {
+        const cards = document.querySelectorAll('.basket-card');
+
+        cards.forEach(card => {
+          let mapMarker = document.querySelector(`#map img[src='https://cdn-icons-png.flaticon.com/512/684/684908.png?${card.dataset.restaurant}']`);
+
+          card.addEventListener('mouseover', event => {
+            mapMarker.src = `https://cdn-icons-png.flaticon.com/512/447/447031.png?${card.dataset.restaurant}`;
+          })
+
+          card.addEventListener('mouseout', event => {
+            mapMarker.src = `https://cdn-icons-png.flaticon.com/512/684/684908.png?${card.dataset.restaurant}`;
+          })
+          return true;
+        });
+      }
+
+        const addHoverEvents = () => {
+          let mapMarker = document.querySelector('#map img');
+          if (mapMarker === null) {
+            setTimeout(addHoverEvents, 1000);
+          } else {
+            changeMarkerOnHover();
+          }
+        };
+        addHoverEvents();
+
+
+    };
   }
-}
 
 export { initMap }
