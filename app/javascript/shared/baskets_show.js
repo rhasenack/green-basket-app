@@ -8,7 +8,7 @@ const addToCheckout = () => {
 
     const changeValue = (element, value) => {
       let valor = Number(element.parentNode.querySelector('.card-count').innerText);
-      if (value  > 0 || valor > 0) {
+      if (value > 0 || valor > 0) {
         element.parentNode.querySelector('.card-count').innerText = valor + value;
         valor = valor + value;
       }
@@ -42,10 +42,10 @@ const addToCheckout = () => {
       // if it's 0, remove
       if (value === 0) {
         console.log(basketCheckoutCard)
-          if (basketCheckoutCard) {
-            basketCheckoutCard.remove();
-          }
+        if (basketCheckoutCard) {
+          basketCheckoutCard.remove();
         }
+      }
 
       // if it's already there, update the quantity and the total price
       if (basketCheckoutCard) {
@@ -73,7 +73,7 @@ const addToCheckout = () => {
       // update total with prices
 
       let totalPriceField = document.querySelector('.total-price')
-      totalPriceField.innerText = `Total: R$ ${totalPrice/100}`
+      totalPriceField.innerText = `Total: R$ ${totalPrice / 100}`
     }
 
     basketCards.forEach(card => {
@@ -99,14 +99,14 @@ const addToCheckout = () => {
 
     });
 
+
+
+    let name = document.querySelector('.restaurant-name')
+
+    name.addEventListener('click', event => {
+      name.contentEditable = true;
+    })
   }
-
-  let name = document.querySelector('.restaurant-name')
-
-  name.addEventListener('click', event => {
-    name.contentEditable = true;
-  })
-
 }
 
-export {addToCheckout}
+export { addToCheckout }

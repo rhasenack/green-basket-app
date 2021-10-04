@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:create, :destroy]
 
+  resources :restaurants, only: [:new, :create]
+
   get '/cart/add', to: "carts#add_basket_to_cart"
   get '/cart/remove', to: "carts#remove_basket_from_cart"
   get '/cart/create', to: "carts#create_cart"
