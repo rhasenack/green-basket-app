@@ -2,12 +2,22 @@
 .basket-card {
   margin-top: 30px;
   display: flex;
-
-  width: 450px;
+  min-width: 450px;
+  max-width: 450px;
   height: 260px;
   padding: 10px;
   border-radius: 10px;
+  // flex-wrap: wrap;
 
+
+
+
+  .card-text {
+    margin-left: 20px;
+    position: relative;
+    width: 100%;
+    min-width: 50%;
+  }
 
   .card-bottom-info {
     position: absolute;
@@ -16,17 +26,13 @@
     text-align: center;
     justify-content: space-between;
     font-weight: bold;
-    width: 100%;
+    min-width: 100%;
 
     p {
       flex-grow: 0;
     }
   }
 
-  .card-text {
-    margin-left: 20px;
-    position: relative;
-  }
 
   h2, h3 {
     opacity: 60%;
@@ -43,6 +49,7 @@
   p {
     margin-bottom: 5px;
     font-size: 16px;
+    word-wrap: break-word;
   }
 
   hr {
