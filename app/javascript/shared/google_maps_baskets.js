@@ -10,6 +10,22 @@ const initMap = () => {
     });
 
 
+    let iconMain = {
+      url: `https://cdn-icons-png.flaticon.com/512/684/684908.png`, // url
+      scaledSize: new google.maps.Size(30, 30), // scaled size
+      origin: new google.maps.Point(0, 0), // origin
+      anchor: new google.maps.Point(15, 30) // anchor
+    };
+
+    let iconHover = {
+      url: `https://cdn-icons-png.flaticon.com/512/447/447031.png`, // url
+      scaledSize: new google.maps.Size(30, 30), // scaled size
+      origin: new google.maps.Point(0, 0), // origin
+      anchor: new google.maps.Point(15, 30) // anchor
+    };
+
+
+
     // define create marker function
     const createMarkers = (marker, cards) => {
       console.log('marker');
@@ -18,14 +34,19 @@ const initMap = () => {
         cards.forEach(card => {
           card.style.color = "red"
         });
-      })
+      });
 
-      // marker.addListener('mouseover', event => {
-      //   cards.forEach(card => {
-      //     card.style.color = "red"
-      //   });
-      // })
-
+      if(cards.length > 0) {
+        cards.forEach(card => {
+          card.addEventListener('mouseover', event => {
+            console.log('hello')
+            marker.setIcon(iconHover);
+          })
+          card.addEventListener('mouseout', event => {
+            marker.setIcon(iconMain);
+          })
+        })
+      }
     }
 
     const cards = document.querySelectorAll('.basket-card');
@@ -39,18 +60,11 @@ const initMap = () => {
         let latitude = Number(card.dataset.latitude);
         let longitude = Number(card.dataset.longitude);
 
-        let icon = {
-          url: `https://cdn-icons-png.flaticon.com/512/684/684908.png?${card.dataset.restaurant}`, // url
-          scaledSize: new google.maps.Size(30, 30), // scaled size
-          origin: new google.maps.Point(0, 0), // origin
-          anchor: new google.maps.Point(15, 30) // anchor
-        };
-
         let marker = new google.maps.Marker({
           position: { lat: latitude, lng: longitude},
           map,
           title: "marker",
-          icon: icon
+          icon: iconMain
         });
 
         let cardsToChange = document.querySelectorAll(`[data-restaurant = "${card.dataset.restaurant}"]`)
@@ -59,36 +73,6 @@ const initMap = () => {
 
       }
     });
-
-    // function to change the baskets' marker image on hover
-    const changeMarkerOnHover = () => {
-      const cards = document.querySelectorAll('.basket-card');
-
-      cards.forEach(card => {
-        let mapMarker = document.querySelector(`#map img[src="https://cdn-icons-png.flaticon.com/512/684/684908.png?${Number(card.dataset.restaurant)}`);
-
-        card.addEventListener('mouseover', event => {
-          mapMarker.src = `https://cdn-icons-png.flaticon.com/512/447/447031.png?${Number(card.dataset.restaurant)}`;
-        })
-
-        card.addEventListener('mouseout', event => {
-          mapMarker.src = `https://cdn-icons-png.flaticon.com/512/684/684908.png?${Number(card.dataset.restaurant)}`;
-        })
-        return true;
-      });
-    };
-
-    // guarantees that markers are drawn before adding the eventListener to the cards
-    const addHoverEvents = () => {
-      let mapMarker = document.querySelector('#map img');
-      if (mapMarker === null) {
-        setTimeout(addHoverEvents, 1000);
-      } else {
-        changeMarkerOnHover();
-      }
-    };
-
-    addHoverEvents();
 
   };
 }
