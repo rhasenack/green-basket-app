@@ -1,7 +1,7 @@
 <div class="restaurant-banner"></div>
 <div class="baskets-show">
   <div class="container">
-    <div class="restaurant-info">
+    <div class="restaurant-info" data-restaurant = "<%=@restaurant.id%>">
       <h1 class='restaurant-name'><%= @restaurant.name %></h1>
       <p class="soft-gray mb-1"> padaria</p>
       <div class="std-flex-left">
@@ -96,7 +96,7 @@
             <div class="checkout-baskets">
               <% unless @baskets_on_cart.nil? %>
                 <% @baskets_on_cart.each do |basket, quantity| %>
-                  <div class="checkout-item <%=basket.name.downcase.gsub(' ', '-')%>">
+                  <div class="checkout-item <%=basket.name.downcase.gsub(' ', '-')%>" data-restaurant = '<%=basket.restaurant.id%>'>
                     <h3><%= basket.name%></h3>
                     <div class='std-flex-space-between'>
                       <p  class='quantity'>qtd: <%= quantity %></p>
@@ -113,5 +113,15 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="modal-close">&times;</span>
+    <p>Você já tem itens de outro restaurante no seu carrinho. Deseja esvaziá-lo?</p>
+    <%= link_to 'hello', cart_clear_and_add_path, remote: true, class: "clear-cart" %>
   </div>
 </div>

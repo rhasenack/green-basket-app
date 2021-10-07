@@ -7,7 +7,13 @@ class CartsController < ApplicationController
 
     cart_basket = CartBasket.where("cart_id = #{@cart.id} and basket_id = #{@basket.id}")
 
+    @restaurant = @basket.restaurant.id
+
+    ## If the cart already has baskets from another restaurant, ask for removal
+    user_cart_basket = CartBasket.where("cart_id = #{@cart.id}");
+
     if cart_basket.size > 0
+      ## If the cart already has baskets from another restaurant, ask for removal
       cart_basket.first.quantity.nil? ? cart_basket.first.quantity = 1 : cart_basket.first.quantity += 1
       cart_basket.first.save!
     else
@@ -26,6 +32,14 @@ class CartsController < ApplicationController
       cart_basket.first.save!
     elsif cart_basket.size > 0  && cart_basket.first.quantity == 1
       cart_basket.first.destroy!
+    end
+  end
+
+  def clear_and_add_basket_to_cart
+    @cart = Cart.where("user_id = #{current_user.id}").first
+    @cart_baskets = CartBasket.where("cart_id = #{@cart.id}")
+    @cart_baskets.each do |cart|
+      cart.destroy!
     end
   end
 
