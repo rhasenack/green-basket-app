@@ -94,12 +94,7 @@ const addToCheckout = () => {
         changeValue(event.currentTarget, -1);
         addToCheckout(card, 'subtract');
       })
-
-
-
     });
-
-
 
     let name = document.querySelector('.restaurant-name')
 
