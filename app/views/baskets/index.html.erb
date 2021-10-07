@@ -12,7 +12,7 @@
 
         <% @baskets.each do |basket| %>
           <%= link_to basket_path(basket) do %>
-            <div class="basket-card" data-latitude = '<%=basket.restaurant.latitude%>' data-longitude = '<%=basket.restaurant.longitude%>' data-restaurant = '<%=basket.restaurant.id%>'>
+            <div class="basket-card" data-latitude = '<%=basket.restaurant.latitude%>' data-longitude = '<%=basket.restaurant.longitude%>' data-restaurant = '<%=basket.restaurant.id%>' data-restaurant-name = '<%=basket.restaurant.name%>'>
               <div class="basket-image">
                 <div class="tags">
                   <% basket.tags.each do |tag| %>

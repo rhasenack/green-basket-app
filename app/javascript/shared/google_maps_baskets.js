@@ -25,21 +25,28 @@ const initMap = () => {
     };
 
 
-
+    const cardsColumnDiv = document.querySelector('.left-column')
     // define create marker function
     const createMarkers = (marker, cards) => {
       console.log('marker');
       marker.setMap(map);
+      let firstCard = cards[0];
       marker.addListener('click', event => {
         cards.forEach(card => {
-          card.style.color = "red"
+          // card.style.color = "red";
+          firstCard.scrollIntoView({ behavior: "smooth" });
+          firstCard.classList.add('highlited-card');
+          setTimeout(function() {
+            firstCard.classList.add('normal-card');
+            firstCard.classList.remove('highlited-card');
+            },1000)
+
         });
       });
 
       if(cards.length > 0) {
         cards.forEach(card => {
           card.addEventListener('mouseover', event => {
-            console.log('hello')
             marker.setIcon(iconHover);
           })
           card.addEventListener('mouseout', event => {
@@ -63,7 +70,7 @@ const initMap = () => {
         let marker = new google.maps.Marker({
           position: { lat: latitude, lng: longitude},
           map,
-          title: "marker",
+          title: card.dataset.restaurantName,
           icon: iconMain
         });
 
