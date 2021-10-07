@@ -35,12 +35,11 @@ const initMap = () => {
         cards.forEach(card => {
           // card.style.color = "red";
           firstCard.scrollIntoView({ behavior: "smooth" });
-          firstCard.classList.add('highlited-card');
+          card.classList.add('highlited-card');
           setTimeout(function() {
-            firstCard.classList.add('normal-card');
-            firstCard.classList.remove('highlited-card');
-            },1000)
-
+            card.classList.add('normal-card');
+            card.classList.remove('highlited-card');
+            },3000)
         });
       });
 
