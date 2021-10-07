@@ -30,7 +30,7 @@ class BasketsController < ApplicationController
 
   def create
     @basket = Basket.new(basket_params)
-    @basket.restaurant = Restaurant.first
+    @basket.restaurant = Restaurant.last
     if @basket.save
       redirect_to baskets_path
     else
