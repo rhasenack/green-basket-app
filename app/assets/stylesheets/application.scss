@@ -13,6 +13,7 @@
 @import "components/banner";
 @import "components/forms";
 @import "components/dashboard-order-card";
+@import "components/modal";
 @import "pages/index";
 @import "pages/home";
 @import "pages/show";
@@ -46,6 +47,12 @@
   display: flex;
   // justify-content: center;
   align-content: center;
+}
+
+.std-flex-right {
+  display: flex;
+  justify-content: end;
+  align-content: flex-end;
 }
 
 .std-flex-end {

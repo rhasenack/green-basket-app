@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
     @user_cart = Cart.where("user_id = #{current_user.id}").first
     @cart_baskets = CartBasket.where("cart_id = #{@user_cart.id}")
     total_cart_price = 0
+    @basket = Basket.find(params[:basket_id])
 
     #Check if user already has an order for this day
     user_orders = Order.where("user_id = #{current_user.id}")
@@ -15,7 +16,11 @@ class OrdersController < ApplicationController
       end
     end
 
-
+    if @cart_baskets.empty?
+      flash[:notice] = 'Your cart is empty!'
+      redirect_to basket_path(@basket) and return
+    end
+    raise
     @order = Order.new(user: current_user, date: Time.now, status: 'placed')
     @order.save!
 

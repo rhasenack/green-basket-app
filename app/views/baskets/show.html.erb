@@ -1,7 +1,7 @@
 <div class="restaurant-banner"></div>
 <div class="baskets-show">
   <div class="container">
-    <div class="restaurant-info">
+    <div class="restaurant-info" data-restaurant = "<%=@restaurant.id%>">
       <h1 class='restaurant-name'><%= @restaurant.name %></h1>
       <p class="soft-gray mb-1"> padaria</p>
       <div class="std-flex-left">
@@ -96,7 +96,7 @@
             <div class="checkout-baskets">
               <% unless @baskets_on_cart.nil? %>
                 <% @baskets_on_cart.each do |basket, quantity| %>
-                  <div class="checkout-item <%=basket.name.downcase.gsub(' ', '-')%>">
+                  <div class="checkout-item <%=basket.name.downcase.gsub(' ', '-')%>" data-restaurant = '<%=basket.restaurant.id%>'>
                     <h3><%= basket.name%></h3>
                     <div class='std-flex-space-between'>
                       <p  class='quantity'>qtd: <%= quantity %></p>
@@ -108,10 +108,22 @@
             </div>
             <div class="std-flex-space-between mt-4">
               <p class="total-price mb-0"> Total: R$ <%= @total/100.0 %></p>
-              <%= link_to 'Place Order', orders_path, class: 'checkout-button', method: :post %>
+              <%= link_to 'Place Order', orders_path(basket_id: @basket.id), class: 'checkout-button', method: :post %>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+
+
+<div id="myModal" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <p>Você já tem itens de outro restaurante no seu carrinho. Deseja esvaziá-lo?</p>
+    <div class="std-flex-right">
+      <%= link_to 'Sim', cart_clear_and_add_path, remote: true, class: "clear-cart modal-button" %>
+      <%= link_to 'Cancelar', cart_destroy_last_path, remote: true, class: "modal-close modal-button" %>
     </div>
   </div>
 </div>

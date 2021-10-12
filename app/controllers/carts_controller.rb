@@ -7,6 +7,8 @@ class CartsController < ApplicationController
 
     cart_basket = CartBasket.where("cart_id = #{@cart.id} and basket_id = #{@basket.id}")
 
+    @restaurant = @basket.restaurant.id
+
     if cart_basket.size > 0
       cart_basket.first.quantity.nil? ? cart_basket.first.quantity = 1 : cart_basket.first.quantity += 1
       cart_basket.first.save!
@@ -29,4 +31,20 @@ class CartsController < ApplicationController
     end
   end
 
+  def clear_and_add_basket_to_cart
+    @cart = Cart.where("user_id = #{current_user.id}").first
+    @cart_baskets = CartBasket.where("cart_id = #{@cart.id}")
+    last_updated = @cart_baskets.maximum(:updated_at)
+    @cart_basket_modified = @cart_baskets.reject{|cart| cart.updated_at == last_updated}
+    @cart_basket_modified.each do |cart_basket|
+      cart_basket.destroy!
+    end
+  end
+
+
+  def destroy_last_basket
+    @cart = Cart.where("user_id = #{current_user.id}").first
+    @cart_baskets = CartBasket.where("cart_id = #{@cart.id}")
+    @cart_baskets.last.destroy!
+  end
 end
