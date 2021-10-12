@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
     user_orders = Order.where("user_id = #{current_user.id}")
     user_orders.each do |order|
       if order.date.to_date == DateTime.now.to_date
-        flash[:notice] = 'You already have an order placed for today!'
+        flash[:alert] = 'You already have an order placed for today!'
         redirect_to user_dashboard_path and return
       end
     end
@@ -20,7 +20,6 @@ class OrdersController < ApplicationController
       flash[:notice] = 'Your cart is empty!'
       redirect_to basket_path(@basket) and return
     end
-    raise
     @order = Order.new(user: current_user, date: Time.now, status: 'placed')
     @order.save!
 
@@ -34,12 +33,16 @@ class OrdersController < ApplicationController
     @order.price = total_cart_price
     @order.save!
 
+    ## Clear cart on order creation
+    @user_cart = Cart.where("user_id = #{current_user.id}").first
+    CartBasket.where("cart_id = #{@user_cart.id}").each(&:destroy!)
     ## redirect to user dashboard
     redirect_to user_dashboard_path, notice: "Order created successfully!"
   end
 
   def destroy
-    # @order = Order.find(params[:id])
-    Order.last.destroy!
+    @order = Order.find(params[:id])
+    @order.destroy!
+    redirect_to user_dashboard_path
   end
 end

@@ -1,5 +1,6 @@
 <div class="container">
   <div class="dashboard">
+  <% if @orders.size > 0 %>
     <h2 class='text-center mt-4 mb-4'>Suas <span class="green">Ordens</span></h2>
     <% @orders.each do |order| %>
       <div class="dashboard-order-card">
@@ -22,7 +23,7 @@
           </div>
           <div class="bottom-card-info std-flex-space-between">
           <div class="buttons std-flex-column-bottom">
-            <%= link_to 'delete', order_path(Order.last), class: "order-delete-button", method: 'delete'%>
+            <%= link_to 'cancelar', order_path(Order.last), class: "order-delete-button", method: 'delete'%>
           </div>
 
           <div class="infos">
@@ -38,7 +39,9 @@
 
     <h2 class="text-center mt-5">Suas <span class="green">Ordens Passadas</span></h2>
 
-
+  <% else %>
+    <h1 class="mt-4">Você ainda não tem nenhum pedido <br><%= link_to "Ver cestas disponíveis", baskets_path %></h1>
+  <% end %>
   </div>
 
 </div>
