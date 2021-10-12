@@ -38,9 +38,17 @@ class CartsController < ApplicationController
   def clear_and_add_basket_to_cart
     @cart = Cart.where("user_id = #{current_user.id}").first
     @cart_baskets = CartBasket.where("cart_id = #{@cart.id}")
-    @cart_baskets.each do |cart|
-      cart.destroy!
+    # raise
+    @cart_basket_modified = @cart_baskets.reject{|cart| cart == @cart_baskets.last}
+    @cart_basket_modified.each do |cart_basket|
+      cart_basket.destroy!
     end
   end
 
+
+  def destroy_last_basket
+    @cart = Cart.where("user_id = #{current_user.id}").first
+    @cart_baskets = CartBasket.where("cart_id = #{@cart.id}")
+    @cart_baskets.last.destroy!
+  end
 end

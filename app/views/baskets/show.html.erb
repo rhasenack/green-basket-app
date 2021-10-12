@@ -108,7 +108,7 @@
             </div>
             <div class="std-flex-space-between mt-4">
               <p class="total-price mb-0"> Total: R$ <%= @total/100.0 %></p>
-              <%= link_to 'Place Order', orders_path, class: 'checkout-button', method: :post %>
+              <%= link_to 'Place Order', orders_path(basket_id: @basket.id), class: 'checkout-button', method: :post %>
           </div>
         </div>
       </div>
@@ -120,8 +120,10 @@
 <div id="myModal" class="modal">
   <!-- Modal content -->
   <div class="modal-content">
-    <span class="modal-close">&times;</span>
     <p>Você já tem itens de outro restaurante no seu carrinho. Deseja esvaziá-lo?</p>
-    <%= link_to 'hello', cart_clear_and_add_path, remote: true, class: "clear-cart" %>
+    <div class="std-flex-right">
+      <%= link_to 'Sim', cart_clear_and_add_path, remote: true, class: "clear-cart modal-button" %>
+      <%= link_to 'Cancelar', cart_destroy_last_path, remote: true, class: "modal-close modal-button" %>
+    </div>
   </div>
 </div>

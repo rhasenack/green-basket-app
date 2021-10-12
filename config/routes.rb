@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   get '/cart/add', to: "carts#add_basket_to_cart"
   get '/cart/remove', to: "carts#remove_basket_from_cart"
   get '/cart/clear_and_add', to: "carts#clear_and_add_basket_to_cart"
+  get '/cart/destroy_last', to: "carts#destroy_last_basket"
   get '/cart/create', to: "carts#create_cart"
-
   get '/user/dashboard', to: "user#dashboard"
 end

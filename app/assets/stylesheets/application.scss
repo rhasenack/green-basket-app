@@ -49,6 +49,12 @@
   align-content: center;
 }
 
+.std-flex-right {
+  display: flex;
+  justify-content: end;
+  align-content: flex-end;
+}
+
 .std-flex-end {
   display: flex;
   justify-content: end;

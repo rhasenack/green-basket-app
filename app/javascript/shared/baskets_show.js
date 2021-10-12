@@ -9,11 +9,16 @@ const addToCheckout = () => {
     const checkoutItems = document.querySelectorAll('.checkout-item');
     let cartAlertFlag = false;
     const modal = document.getElementById("myModal");
-    const closeModal = document.querySelector(".modal-close");
+    const closeModal = document.querySelectorAll(".modal-close");
     const clearCartBtn = document.querySelector(".clear-cart")
 
 
     // Add basic modal behaviour
+    closeModal.forEach (close => {
+      close.onclick = function () {
+        modal.style.display = "none";
+      }
+    });
 
     closeModal.onclick = function () {
       modal.style.display = "none";
