@@ -30,7 +30,7 @@ class BasketsController < ApplicationController
 
   def create
     @basket = Basket.new(basket_params)
-    @basket.restaurant = Restaurant.where("user_id = #{current_user}")
+    @basket.restaurant = Restaurant.where("user_id = #{current_user.id}").first
     if @basket.save
       redirect_to baskets_path
     else
