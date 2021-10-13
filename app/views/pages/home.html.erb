@@ -38,12 +38,15 @@
     <div class="col-md-6 col-sm-12">
       <%= image_tag "waste.jpg", id:"waste-img", class:"mt-4" %>
       <h2 class="text-right mt-4 mb-4">Você está <span class="green">conosco?</span></h2>
-
-      <button class="home-button mb-3">Sou um <span class="green">consumidor</span> e quero produtos a baixo custo</button>
+      <%= link_to (baskets_path) do  %>
+        <button class="home-button mb-3">Sou um <span class="green">consumidor</span> e quero produtos a baixo custo</button>
+      <% end %>
       <br>
-      <button class="home-button mb-3">Sou um <span class="green">produtor</span> e me interesso por sobras</button>
-      <br>
-      <button class="home-button">Sou um <span class="green">estabelecimento</span> e quero disponibilizar meus produtos</button>
+      <%# <button class="home-button mb-3">Sou um <span class="green">produtor</span> e me interesso por sobras</button> %>
+      <%# <br> %>
+      <%= link_to (new_restaurant_path) do %>
+        <button class="home-button">Sou um <span class="green">estabelecimento</span> e quero disponibilizar meus produtos</button>
+      <% end %>
     </div>
   </div>
 
