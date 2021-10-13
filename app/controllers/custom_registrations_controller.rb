@@ -1,9 +1,8 @@
-# app/controllers/custom_sessions_controller.rb
-class CustomSessionsController < Devise::SessionsController
+# app/controllers/registrations_controller.rb
+class RegistrationsController < Devise::RegistrationsController
+  after_sign_up :after_sign_up, only: :create
 
-  after_action :after_login, only: :create
-
-  def after_login
+  def after_sign_up
     # raise
     check_user_cart
   end
@@ -18,4 +17,5 @@ class CustomSessionsController < Devise::SessionsController
       cart.save!
     end
   end
+
 end
