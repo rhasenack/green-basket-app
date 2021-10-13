@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { sessions: "custom_sessions"}
+  devise_for :users, controllers: { sessions: "custom_sessions", registrations: "custom_registrations" }
 
   root to: 'pages#home'
 
