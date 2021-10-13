@@ -16,10 +16,10 @@ restaurant_user_2.save!
 #RESTAURANTS
 puts 'seeding 2 restaurants'
 
-padaria_do_zeze = Restaurant.new(name: 'Padaria do Zezé', city:'Porto Alegre', country: 'Brasil', address: 'Rua Coronel Lucas de Oliveira, 1536', user_id: 1)
+padaria_do_zeze = Restaurant.new(name: 'Padaria do Zezé', city:'Porto Alegre', country: 'Brasil', address: 'Rua do Amial 15, Porto, Portugal', user_id: 1)
 padaria_do_zeze.save!
 
-fruteira_do_pele = Restaurant.new(name: 'Fruteira do Pelé', city:'Porto Alegre', country: 'Brasil', address: 'Rua Liberdade 535', user_id: 2)
+fruteira_do_pele = Restaurant.new(name: 'Fruteira do Pelé', city:'Porto Alegre', country: 'Rua do Amial 50, Porto, Portugal,', user_id: 2)
 fruteira_do_pele.save!
 
 
