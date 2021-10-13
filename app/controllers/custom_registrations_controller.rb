@@ -1,6 +1,6 @@
 # app/controllers/registrations_controller.rb
-class RegistrationsController < Devise::RegistrationsController
-  after_sign_up :after_sign_up, only: :create
+class CustomRegistrationsController < Devise::RegistrationsController
+  after_action :after_sign_up, only: :create
 
   def after_sign_up
     # raise
