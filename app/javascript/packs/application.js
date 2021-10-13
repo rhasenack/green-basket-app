@@ -30,6 +30,7 @@ import { initMap } from '../shared/google_maps_baskets';
 import { addToCheckout } from '../shared/baskets_show';
 import { enableEditButtons } from '../shared/baskets_edit';
 import { autocompleteStart } from '../shared/maps_autocomplete';
+import { controlSignUpCheckBoxes } from '../shared/devise_sign_up';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
@@ -38,4 +39,5 @@ document.addEventListener('turbolinks:load', () => {
   addToCheckout();
   enableEditButtons();
   autocompleteStart();
+  controlSignUpCheckBoxes();
 });

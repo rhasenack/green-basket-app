@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container devise-sign-up">
   <div class="row justify-content-md-center">
     <div class="col-6">
       <div class="devise-form-box gradient-bg">
@@ -20,9 +20,11 @@
                         required: true,
                         input_html: { autocomplete: "new-password" } %>
             <%= f.input :establishment,
-                        required: true  %>
+                        required: true,
+                        input_html: {class: 'establishment-checkbox'} %>
             <%= f.input :consumer,
-                        required: true  %>
+                        required: true,
+                        input_html: {checked:  true, class: 'consumer-checkbox'}  %>
           </div>
 
           <div class="form-actions">
