@@ -12,6 +12,13 @@
               <%= f.input :stock %>
               <%= f.input :pickup_min %>
               <%= f.input :pickup_max %>
+              <%= simple_fields_for :basket_tags do |o| %>
+                <%= o.input :tags, collection: Tag.all, input_html: { class: "multiple-select", multiple: true }, include_hidden: false %>
+              <% end %>
+              <%= f.input :photo, as: :file %>
+              <p>Or chose one from our defaults: </p>
+              <div class="picture-options">
+              </div>
             </div>
             <div class="form-actions">
               <%= f.button :submit, "Add Basket"%>
