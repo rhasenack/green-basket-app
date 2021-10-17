@@ -26,6 +26,7 @@ class BasketsController < ApplicationController
 
   def new
     @basket = Basket.new()
+    authorize @basket
     @tag_options = ['pães', 'bolos', 'verduras']
   end
 

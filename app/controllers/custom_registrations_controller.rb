@@ -3,7 +3,6 @@ class CustomRegistrationsController < Devise::RegistrationsController
   after_action :after_sign_up, only: :create
 
   def after_sign_up
-    # raise
     check_user_cart
   end
 
