@@ -26,12 +26,20 @@ class BasketsController < ApplicationController
 
   def new
     @basket = Basket.new()
+    @tag_options = ['pães', 'bolos', 'verduras']
   end
 
   def create
     @basket = Basket.new(basket_params)
     @basket.restaurant = Restaurant.where("user_id = #{current_user.id}").first
+    @tags = params[:basket_tags][:tags]
+    # raise
     if @basket.save
+      @tags.each do |tag_id|
+        tag = Tag.find(tag_id)
+        basket_tag = BasketTag.new(basket: @basket, tag: tag)
+        basket_tag.save
+      end
       redirect_to baskets_path
     else
       render :new

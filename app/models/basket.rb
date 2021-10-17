@@ -1,4 +1,5 @@
 class Basket < ApplicationRecord
+  has_one_attached :photo
   has_many :basket_tags
   has_many :tags, through: :basket_tags
 
