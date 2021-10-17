@@ -19,7 +19,7 @@ puts 'seeding 2 restaurants'
 padaria_do_zeze = Restaurant.new(name: 'Padaria do Zezé', address: 'Rua do Amial 15, Porto, Portugal', user_id: 1)
 padaria_do_zeze.save!
 
-fruteira_do_pele = Restaurant.new(name: 'Fruteira do Pelé', address: 'Rua do Amial 50, Porto, Portugal', user_id: 2)
+fruteira_do_pele = Restaurant.new(name: 'Fruteira do Pelé', address: 'Rua do Amial 200, Porto, Portugal', user_id: 2)
 fruteira_do_pele.save!
 
 
