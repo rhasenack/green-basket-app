@@ -3,6 +3,7 @@ class RestaurantsController < ApplicationController
 
   def new
     @restaurant = Restaurant.new
+    authorize @restaurant
   end
 
   def create
@@ -10,7 +11,6 @@ class RestaurantsController < ApplicationController
     @restaurant.user = current_user
     @restaurant.save!
     redirect_to baskets_path
-
   end
 
 
