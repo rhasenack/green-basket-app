@@ -1,11 +1,13 @@
 class RestaurantPolicy < ApplicationPolicy
-  class Scope < Scope
-    def resolve
-      scope.all
-    end
+  def resolve
+    scope.all
+  end
 
-    def new?
-      user.restaurant == true?
-    end
+  def new?
+    user.establishment?
+  end
+
+  def create?
+    true
   end
 end

@@ -30,4 +30,8 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+ pundit:
+   default: 'You are not authorized to perform this action'
+   restaurant_policy:
+     new?: 'You signed up as a consumer'
+     create?: 'You cannot create posts!'
