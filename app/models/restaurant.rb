@@ -3,6 +3,7 @@ class Restaurant < ApplicationRecord
   has_many :orders, through: :baskets
   belongs_to :user
   validates :name, length: { minimum: 2 }
+  validates :address, presence: true
 
   geocoded_by :address
   after_validation :geocode
